@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  grupo: MyString
+  relatorio_id: 
+  causa: MyString
+  relevancia: false
+  acao: MyText
+  responsavel_id: 
+  prazo: 2016-10-12
+
+two:
+  grupo: MyString
+  relatorio_id: 
+  causa: MyString
+  relevancia: false
+  acao: MyText
+  responsavel_id: 
+  prazo: 2016-10-12

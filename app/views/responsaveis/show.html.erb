@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @responsavel.nome %>
+</p>
+
+<%= link_to 'Editar', edit_responsavel_path(@responsavel) %> |
+<%= link_to 'Voltar', responsaveis_path %>

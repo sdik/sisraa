@@ -1,0 +1,1 @@
+json.array! @fishbones, partial: 'fishbones/fishbone', as: :fishbone

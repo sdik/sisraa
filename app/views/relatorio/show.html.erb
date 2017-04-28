@@ -1,0 +1,31 @@
+<%- model_class = Relatorio -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:data) %>:</strong></dt>
+  <dd><%= @relatorio.data %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:departamento_id) %>:</strong></dt>
+  <dd><%= @relatorio.departamento_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:setor_id) %>:</strong></dt>
+  <dd><%= @relatorio.setor_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:anomalia) %>:</strong></dt>
+  <dd><%= @relatorio.anomalia %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:descricao) %>:</strong></dt>
+  <dd><%= @relatorio.descricao %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:acao) %>:</strong></dt>
+  <dd><%= @relatorio.acao %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:grupodeanalise) %>:</strong></dt>
+  <dd><%= @relatorio.grupodeanalise %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              relatorios_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_relatorio_path(@relatorio), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              relatorio_path(@relatorio),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você deseja apagar Registro?')) },
+              :class => 'btn btn-danger' %>

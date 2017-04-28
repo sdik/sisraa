@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Grupo:</strong>
+  <%= @fishbone.grupo %>
+</p>
+
+<p>
+  <strong>Relatorio:</strong>
+  <%= @fishbone.relatorio %>
+</p>
+
+<p>
+  <strong>Causa:</strong>
+  <%= @fishbone.causa %>
+</p>
+
+<p>
+  <strong>Relevancia:</strong>
+  <%= @fishbone.relevancia %>
+</p>
+
+<p>
+  <strong>Acao:</strong>
+  <%= @fishbone.acao %>
+</p>
+
+<p>
+  <strong>Responsavel:</strong>
+  <%= @fishbone.responsavel %>
+</p>
+
+<p>
+  <strong>Prazo:</strong>
+  <%= @fishbone.prazo %>
+</p>
+
+<%= link_to 'Editar', edit_fishbone_path(@fishbone) %> |
+<%= link_to 'Voltar', relatorio_path(@fishbone.relatorio) %>

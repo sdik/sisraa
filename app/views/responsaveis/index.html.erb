@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lista de  Responsaveis</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @responsaveis.each do |responsavel| %>
+      <tr>
+        <td><%= responsavel.nome %></td>
+        <td><%= link_to 'Show', responsavel %></td>
+        <td><%= link_to 'Editar', edit_responsavel_path(responsavel) %></td>
+        <td><%= link_to 'Excluir', responsavel, method: :delete, data: { confirm: 'Você deseja apagar Registro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Responsavel', new_responsavel_path %>

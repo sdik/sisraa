@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lista de  Fishbones</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Grupo</th>
+      <th>Relatorio</th>
+      <th>Causa</th>
+      <th>Relevancia</th>
+      <th>Acao</th>
+      <th>Responsavel</th>
+      <th>Prazo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fishbones.each do |fishbone| %>
+      <tr>
+        <td><%= fishbone.grupo %></td>
+        <td><%= fishbone.relatorio %></td>
+        <td><%= fishbone.causa %></td>
+        <td><%= fishbone.relevancia %></td>
+        <td><%= fishbone.acao %></td>
+        <td><%= fishbone.responsavel %></td>
+        <td><%= fishbone.prazo %></td>
+        <td><%= link_to 'Show', fishbone %></td>
+        <td><%= link_to 'Editar', edit_fishbone_path(fishbone) %></td>
+        <td><%= link_to 'Excluir', fishbone, method: :delete, data: { confirm: 'Você deseja apagar Registro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Fishbone', new_fishbone_path %>

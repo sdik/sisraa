@@ -1,0 +1,234 @@
+<%- model_class = Relatorio -%>
+<div class = "hidden-print">
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <p id="notice"><%= notice %></p>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:data) %>:</strong></dt>
+  <dd><%= @relatorio.data %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:departamento_id) %>:</strong></dt>
+  <dd><%= @relatorio.departamento.nome %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:setor_id) %>:</strong></dt>
+  <dd><%= @relatorio.setor.nome %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:anomalia) %>:</strong></dt>
+  <dd><%= @relatorio.anomalia %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:descricao) %>:</strong></dt>
+  <dd><%= @relatorio.descricao %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:acao) %>:</strong></dt>
+  <dd><%= @relatorio.acao %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:grupodeanalise) %>:</strong></dt>
+  <dd><%= @relatorio.grupodeanalise %></dd>
+</dl>
+
+<%= link_to t('.Voltar'),
+              relatorios_path, :class => 'btn btn-default'  %>
+<%= link_to t('.Editar'),
+              edit_relatorio_path(@relatorio), :class => 'btn btn-default' %>
+<%= link_to t('.Deletar'),
+              relatorio_path(@relatorio),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Você deseja apagar Registro?')) },
+              :class => 'btn btn-danger' %>
+
+<h3> Análise das Causa <div class="row"> </h3>
+ <% @texto =" - #{@relatorio.anomalia}\n"%>
+            <div class="col-xs-6 col-lg-4">
+             <div class = "panel panel-primary">
+                 <div class = "panel-heading">
+                 <h3 class = "panel-title pull-left">Mão de Obra</h3>
+                 <button class="btn btn-sm pull-right" data-toggle="modal" data-target="#Maodeobra">+</button>
+                         <div class="clearfix"></div>
+                 </div>
+                  <% @texto << "   - Mão de Obra\n"%>
+                <% @relatorio.fishbones.where(grupo:'Mão de Obra').each do |espinha| %>
+                 <div class = "panel-body">
+                     <%= link_to espinha.causa, espinha %>
+                     <%= link_to 'Excluir', espinha, method: :delete, data: { confirm: 'Você deseja apagar Registro?' }, :class => 'btn btn-xs btn-danger pull-right' %>
+                     <% @texto <<"     - #{espinha.causa}\n"%>
+                 </div>
+              <% end %>
+             </div>
+             </div><!--/.col-xs-6.col-lg-4-->
+          
+  
+            <div class="col-xs-6 col-lg-4">
+             <div class = "panel panel-primary">
+                 <div class = "panel-heading">
+                   <% @texto << "   - Máquina\n"%>
+                 <h3 class = "panel-title pull-left">Máquina</h3>
+                 <button class="btn btn-sm pull-right" data-toggle="modal" data-target="#Maquina">+</button>
+                         <div class="clearfix"></div>
+             </div>
+                <% @relatorio.fishbones.where(grupo:'Máquina').each do |espinha| %>
+                 <div class = "panel-body">
+                     <%= link_to espinha.causa, espinha %>
+                     <%= link_to 'Excluir', espinha, method: :delete, data: { confirm: 'Você deseja apagar Registro?' }, :class => 'btn btn-xs btn-danger pull-right' %>
+                     <% @texto <<"     - #{espinha.causa}\n"%>
+                 </div>
+              <% end %>
+             </div> 
+            </div><!--/.col-xs-6.col-lg-4-->
+            
+            <div class="col-xs-6 col-lg-4">
+               <div class = "panel panel-primary">
+                 <div class = "panel-heading">
+                 <h3 class = "panel-title pull-left">Matéria Prima</h3>
+                  <% @texto << "   - Matéria Prima\n"%>
+                 <button class="btn btn-sm pull-right" data-toggle="modal" data-target="#Materiaprima">+</button>
+                         <div class="clearfix"></div>
+             </div>
+                <% @relatorio.fishbones.where(grupo:'Matéria Prima').each do |espinha| %>
+                 <div class = "panel-body">
+                      <%= link_to espinha.causa, espinha %>
+                      <%= link_to 'Excluir', espinha, method: :delete, data: { confirm: 'Você deseja apagar Registro?' }, :class => 'btn btn-xs btn-danger pull-right' %>
+                     <% @texto <<"     - #{espinha.causa}\n"%>
+                 </div>
+              <% end %>
+             </div> 
+             </div><!--/.col-xs-6.col-lg-4-->
+             
+            <div class="col-xs-6 col-lg-4">
+              <div class = "panel panel-primary">
+                 <div class = "panel-heading">
+                 <h3 class = "panel-title pull-left">Métodos</h3>
+                  <% @texto << "   - Métodos\n"%>
+                 <button class="btn btn-sm pull-right" data-toggle="modal" data-target="#Metodo">+</button>
+                         <div class="clearfix"></div>
+             </div>
+                <% @relatorio.fishbones.where(grupo:'Método').each do |espinha| %>
+                 <div class = "panel-body">
+                      <%= link_to espinha.causa, espinha %>
+                      <%= link_to 'Excluir', espinha, method: :delete, data: { confirm: 'Você deseja apagar Registro?' }, :class => 'btn btn-xs btn-danger pull-right' %>
+                     <% @texto <<"     - #{espinha.causa}\n"%>
+                 </div>
+              <% end %>
+             </div> 
+            </div><!--/.col-xs-6.col-lg-4-->
+            
+            <div class="col-xs-6 col-lg-4">
+              <div class = "panel panel-primary">
+                 <div class = "panel-heading">
+                 <h3 class = "panel-title pull-left">Meio Ambiente</h3>
+                  <% @texto << "   - Meio Ambiente\n"%>
+                 <button class="btn btn-sm pull-right" data-toggle="modal" data-target="#Meioambiente">+</button>
+                         <div class="clearfix"></div>
+             </div>
+                <% @relatorio.fishbones.where(grupo:'Meio Ambiente').each do |espinha| %>
+                 <div class = "panel-body">
+                     <%= link_to espinha.causa, espinha %>
+                     <%= link_to 'Excluir', espinha, method: :delete, data: { confirm: 'Você deseja apagar Registro?' }, :class => 'btn btn-xs btn-danger pull-right' %>
+                     <% @texto <<"     - #{espinha.causa}\n"%>
+                 </div>
+              <% end %>
+             </div> 
+            </div><!--/.col-xs-6.col-lg-4-->
+            
+          <div class="col-xs-6 col-lg-4">
+              <div class = "panel panel-primary">
+                 <div class = "panel-heading">
+                 <h3 class = "panel-title pull-left">Medidas</h3>
+                  <% @texto << "   - Medidas\n"%>
+                 <button class="btn btn-sm pull-right" data-toggle="modal" data-target="#Medidas">+</button>
+                         <div class="clearfix"></div>
+             </div>
+                <% @relatorio.fishbones.where(grupo:'Medidas').each do |espinha| %>
+                 <div class = "panel-body">
+                     <%= link_to espinha.causa, espinha %>
+                     <%= link_to 'Excluir', espinha, method: :delete, data: { confirm: 'Você deseja apagar Registro?' }, :class => 'btn btn-xs btn-danger pull-right' %>
+                     <% @texto <<"     - #{espinha.causa}\n"%>
+                 </div>
+              <% end %>
+             </div> 
+            </div><!--/.col-xs-6.col-lg-4-->
+          </div><!--/row-->
+</div>
+<table class="table" width="800" border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="188" height="82">&nbsp;</td>
+    <td colspan="4"><center><h2>Sistema de Gestão por Resultados</h2>
+    <h2>Relatório de Análise de Anomalia - RAA</h2></center> </td>
+    <td width="188"><h2>Nº <%= @relatorio.id %> </h2></td>
+  </tr>
+  <tr>
+   <td colspan="6">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="2"><h4>Departamento: <%= @relatorio.departamento.nome %></h4></td>
+    <td colspan="2"><h4>Setor: <%= @relatorio.setor.nome %></h4></td>
+    <td colspan="2"><h4>Data: <%= @relatorio.data.strftime("%d/%m/%Y")%></h4></td>
+  </tr>
+  <tr>
+    <td colspan="6"><h4>Anomalia: <%= @relatorio.anomalia %></h4></td>
+  </tr>
+  <tr>
+    <td colspan="6"><h4>Descrição: <%= @relatorio.descricao %></h4></td>
+  </tr>
+  <tr>
+    <td colspan="6"><h4>Grupo de Análise: <%= @relatorio.grupodeanalise %></h4> </td>
+  </tr>
+  <tr>
+    <td height="300" colspan="6"><h4>Análise das Causas:</h4>
+    <div id="fishbone">
+     </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="6"><h4><center>PLANO DE AÇÃO</center></h4></td>
+  </tr>
+  <tr>
+    <td width="250"><h4><center>Causa</center></h4></td>
+    <td colspan="3"><h4><center>Ação</center></h4></td>
+    <td width="86"><h4><center>Responsavel</center></h4></td>
+    <td width="37"><h4><center>Prazo</center></h4></td>
+  </tr>
+  <% @relatorio.fishbones.where(relevancia: true).each do |e| %>
+  <tr>
+    <td><h4><%= e.causa %></h4></td>
+    <td colspan="3"><h4><%= e.acao %></h4></td>
+    <td width="86"><h4><%= Responsavel.find(e.responsavel_id).nome %></h4></td>
+    <td width="37"><h4><%= e.prazo.strftime("%d/%m/%Y") %></h4></td>
+  </tr>
+  <% end %>
+  <tr>
+    <td colspan="3"><h4>Visto Gerência:</h4></td>
+    <td colspan="3"><h4>Visto Supervisão:</h4></td>
+  </tr>
+</table>
+</div>
+ 
+<style>
+
+#fishbone *{ font-family: "Gill Sans", "Gill Sans MT"; }
+
+#fishbone .label-0{ font-size: 30px; }
+#fishbone .label-1{ font-size: 20px; fill: #111; }
+#fishbone .label-2{ font-size: 16px; fill: #444; }
+#fishbone .label-3{ font-size: 9px; fill: #888; }
+#fishbone .label-4{ font-size: 8px; fill: #aaa; }
+
+#fishbone .link-0{ stroke: #000; stroke-width: 2px}
+#fishbone .link-1{ stroke: #333; stroke-width: 1px}
+#fishbone .link-2, .link-3, .link-4{ stroke: #666; stroke-width: .5px; }
+#fishbone .cm-s-neat span.cm-comment { color: #a86; }
+#fishbone .cm-s-neat span.cm-keyword { line-height: 1em; font-weight: bold; color: blue; }
+#fishbone .cm-s-neat span.cm-string { color: #a22; }
+#fishbone .cm-s-neat span.cm-builtin { line-height: 1em; font-weight: bold; color: #077; }
+#fishbone .cm-s-neat span.cm-special { line-height: 1em; font-weight: bold; color: #0aa; }
+#fishbone .cm-s-neat span.cm-variable { color: black; }
+#fishbone .cm-s-neat span.cm-number, .cm-s-neat span.cm-atom { color: #3a3; }
+#fishbone .cm-s-neat span.cm-meta {color: #555;}
+#fishbone .cm-s-neat span.cm-link { color: #3a3; }
+
+#fishbone .cm-s-neat .CodeMirror-activeline-background {background: #e8f2ff !important;}
+#fishbone .cm-s-neat .CodeMirror-matchingbracket {outline:1px solid grey; color:black !important;}"
+</style>
+
+<%= render :partial => 'maodeobra' %>
+<%= render :partial => 'maquina' %>
+<%= render :partial => 'materiaprima' %>
+<%= render :partial => 'medidas' %>
+<%= render :partial => 'metodos' %>
+<%= render :partial => 'meioambiente' %>
+<%= render :partial => 'relatoriocompleto', :locals => {text: @texto} %>

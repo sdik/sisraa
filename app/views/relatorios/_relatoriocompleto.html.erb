@@ -1,0 +1,45 @@
+  <div id="code", style="display: none;">
+  <textarea><%=@texto%>
+  </textarea>
+      </div>
+    </div>
+      <script>
+      var editing = 1; 
+      var size = (function(){
+          return {width: 1000, height: this.clientHeight-400};
+        }).bind(window.document.documentElement);
+    
+      var fishlist = d3.fishlist()
+        .editor(CodeMirror.fromTextArea(d3.select("#code textarea").node(), {
+          mode: "markdown",
+          lineNumbers: true,
+          theme: "neat",
+          extraKeys: {Enter: "newlineAndIndentContinueMarkdownList"}
+        }));
+      
+      fishlist.force().size([size().width, size().height]);
+      
+      var svg = d3.select("#fishbone")
+        .append("svg")
+        // firefox needs a real size
+        .attr(size())
+        // set up the default arrowhead
+        .call(fishlist.fishbone().defaultArrow)
+        .call(fishlist);
+      
+      d3.select("#edit").on("click", function(){
+        d3.select("#code")
+          .transition()
+          .style("height", editing ? "0" : "100%");
+        editing = !editing;
+      });
+      
+      // handle resizing the window
+      d3.select(window).on("resize", function(){
+        fishlist.force()
+          .size([size().width, size().height])
+          .resume();
+        svg.attr(size());
+      });
+    
+    </script>

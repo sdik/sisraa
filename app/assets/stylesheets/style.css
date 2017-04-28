@@ -1,0 +1,26 @@
+/*
+    Example fishbone styling... note that you can't actually change
+    line markers here, which is annoying
+
+
+html, body{ margin: 0; padding: 0; overflow: hidden;}
+
+/* get it? gill? 
+
+#fishbone{font-family: "Gill Sans", "Gill Sans MT";}
+#fishbone > .label-0{ font-size: 2em; }
+#fishbone > .label-1{ font-size: 1.5em; fill: #111; }
+#fishbone > .label-2{ font-size: 1em; fill: #444; }
+#fishbone > .label-3{ font-size: .9em; fill: #888; }
+#fishbone > .label-4{ font-size: .8em; fill: #aaa; }
+
+#fishbone > .link-0{ stroke: #000; stroke-width: 2px}
+#fishbone > .link-1{ stroke: #333; stroke-width: 1px}
+#fishbone > .link-2, .link-3, .link-4{ stroke: #666; stroke-width: .5px; }
+
+#editor{ position: absolute; opacity: .8; width: 300px; height: 100%; padding: 10px; overflow: hidden;}
+#code{ position: absolute; height: 100%; overflow: hidden; }
+
+#fishbone > .CodeMirror { border: 1px solid #eee; height: auto; border-radius: 5px; }
+#fishbone > .CodeMirror-scroll { overflow-y: hidden; overflow-x: auto; }
+*/

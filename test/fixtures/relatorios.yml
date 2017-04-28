@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data: 2016-10-12
+  departamento_id: 
+  setor_id: 
+  anomalia: MyString
+  descricao: MyText
+  acao: MyText
+  grupodeanalise: MyString
+
+two:
+  data: 2016-10-12
+  departamento_id: 
+  setor_id: 
+  anomalia: MyString
+  descricao: MyText
+  acao: MyText
+  grupodeanalise: MyString
