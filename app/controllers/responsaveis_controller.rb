@@ -1,6 +1,6 @@
 class ResponsaveisController < ApplicationController
   before_action :set_responsavel, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /responsaveis
   # GET /responsaveis.json
   def index

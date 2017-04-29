@@ -1,6 +1,6 @@
 class RelatoriosController < ApplicationController
   before_action :set_relatorio, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /relatorios
   # GET /relatorios.json
   def index

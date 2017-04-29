@@ -1,5 +1,6 @@
 class DepartamentosController < ApplicationController
   before_action :set_departamento, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /departamentos
   # GET /departamentos.json

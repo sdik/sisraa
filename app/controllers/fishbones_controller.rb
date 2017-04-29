@@ -1,6 +1,6 @@
 class FishbonesController < ApplicationController
   before_action :set_fishbone, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /fishbones
   # GET /fishbones.json
   def index

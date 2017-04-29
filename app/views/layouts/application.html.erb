@@ -17,7 +17,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<%=relatorios_path%>">RAA</a>
+          <a class="navbar-brand" href="<%=welcome_index_path%>">RAA</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -25,6 +25,15 @@
            <li><%= link_to "Departamentos", departamentos_path %></li>
            <li><%= link_to "Setores", setores_path %> </li>
            <li><%= link_to "Responsáveis", responsaveis_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+             <p class="navbar-text"><%= current_user.email %></p>
+             <%= link_to "Sair", destroy_user_session_path, method: :delete, :class=>"btn btn-danger btn-sm navbar-btn" %>
+          <% else %>
+             <%= link_to "Cadastrar", new_user_registration_path, :class=>"btn btn-default btn-sm navbar-btn" %> 
+             <%= link_to "Logar", new_user_session_path, :class=>"btn btn-success btn-sm navbar-btn" %>
+          <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
