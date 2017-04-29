@@ -31,7 +31,7 @@
              <p class="navbar-text"><%= current_user.email %></p>
              <%= link_to "Sair", destroy_user_session_path, method: :delete, :class=>"btn btn-danger btn-sm navbar-btn" %>
           <% else %>
-             <%= link_to "Cadastrar", new_user_registration_path, :class=>"btn btn-default btn-sm navbar-btn" %> 
+             <!-- #link_to "Cadastrar", new_user_registration_path, :class=>"btn btn-default btn-sm navbar-btn" --> 
              <%= link_to "Logar", new_user_session_path, :class=>"btn btn-success btn-sm navbar-btn" %>
           <% end %>
           </ul>
