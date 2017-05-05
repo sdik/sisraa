@@ -7,7 +7,7 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:data) %>:</strong></dt>
-  <dd><%= @relatorio.data %></dd>
+  <dd><%= @relatorio.data.strftime("%d/%m/%Y")  %></dd>
   <dt><strong><%= model_class.human_attribute_name(:departamento_id) %>:</strong></dt>
   <dd><%= @relatorio.departamento.nome %></dd>
   <dt><strong><%= model_class.human_attribute_name(:setor_id) %>:</strong></dt>
@@ -33,7 +33,7 @@
               :class => 'btn btn-danger' %>
 
 <h3> Análise das Causa <div class="row"> </h3>
- <% @texto =" - #{@relatorio.anomalia}\n"%>
+ <% @texto =" - #{ "." }\n"%>
             <div class="col-xs-6 col-lg-4">
              <div class = "panel panel-primary">
                  <div class = "panel-heading">
@@ -144,9 +144,9 @@
             </div><!--/.col-xs-6.col-lg-4-->
           </div><!--/row-->
 </div>
-<table class="table" width="800" border="1" align="center" cellpadding="0" cellspacing="0">
+<table width="800" border="1" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="188" height="82">&nbsp;</td>
+    <td width="188" height="82"><center><%= image_tag("log.png", :alt => "log") %></center></td>
     <td colspan="4"><center><h2>Sistema de Gestão por Resultados</h2>
     <h2>Relatório de Análise de Anomalia - RAA</h2></center> </td>
     <td width="188"><h2>Nº <%= @relatorio.id %> </h2></td>
@@ -180,15 +180,15 @@
   <tr>
     <td width="250"><h4><center>Causa</center></h4></td>
     <td colspan="3"><h4><center>Ação</center></h4></td>
-    <td width="86"><h4><center>Responsavel</center></h4></td>
+    <td width="200"><h4><center>Responsável</center></h4></td>
     <td width="37"><h4><center>Prazo</center></h4></td>
   </tr>
   <% @relatorio.fishbones.where(relevancia: true).each do |e| %>
   <tr>
     <td><h4><%= e.causa %></h4></td>
     <td colspan="3"><h4><%= e.acao %></h4></td>
-    <td width="86"><h4><%= Responsavel.find(e.responsavel_id).nome %></h4></td>
-    <td width="37"><h4><%= e.prazo.strftime("%d/%m/%Y") %></h4></td>
+    <td width="200"><h4><%= Responsavel.find(e.responsavel_id).nome %></h4></td>
+    <td width="37"><center><h4><%= e.prazo.strftime("%d/%m/%Y") %></h4></center></td>
   </tr>
   <% end %>
   <tr>

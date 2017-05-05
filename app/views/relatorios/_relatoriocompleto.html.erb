@@ -6,7 +6,7 @@
       <script>
       var editing = 1; 
       var size = (function(){
-          return {width: 1000, height: this.clientHeight-400};
+          return {width: this.clientWidth, height: this.clientHeight};
         }).bind(window.document.documentElement);
     
       var fishlist = d3.fishlist()
